@@ -18,28 +18,167 @@
 	<div id="header-wrapper">
 		<div id="header" class="container">
 			<div id="logo">
-				<h1><a href="#">Cifrado Vigenere</a></h1>
+				<h1>Cifrado Vigenere</h1>
 				<p> Seguridad en Sistemas Informáticos </p>
-				<a href="http://templated.co" rel="nofollow"> Ver repositorio </a>
+				blue</a>
+				<a href="https://github.com/RebeccaMartinez/Cifrado_Vigenere" class="myButton">Ver repositorio </a>
 			</div>
-			<div id="banner"> <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a> </div>
 		</div>
 	</div>
 	<div id="page" class="container">
 		<div id="content">
 			<div class="title">
-				<h2>Introducción</h2>
+				<h2>Características</h2>
 			</div>
-			<p>Se trata de un método de cifrado polialfabético, o sea que utiliza distintos alfabetos de cifrado para cada letra</p>
-			<p> es un criptosistema simétrico, es decir, utiliza la misma clave para cifrar y descifrar</p>
+			<ul>
+				<li>Método de cifrado polialfabético (se utilizan alfabetos de cifrado para cada letra)</li>
+				<li>Criptosistema simétrico (ulitiliza la misma clave para cifrar y descifrar)</li>
+				<li>Clave: secuencia de símbolos del alfabeto (Ejemplo: SOL)</li>
+			</ul>
 			<div class="title" id="seg">
 				<h2>Explicación</h2>
 			</div>
+			<p> En primer lugar, se asocia cada letra con una cifra correspondiente. <p>
+			<table rules="cols">
+				<tr>
+					<td>A</td>
+					<td>B</td>
+					<td>C</td>
+					<td>D</td>
+					<td>E</td>
+					<td>F</td>
+					<td>G</td>
+					<td>H</td>
+					<td>I</td>
+					<td>J</td>
+					<td>K</td>
+					<td>L</td>
+					<td>M</td>
+					<td>N</td>
+					<td>O</td>
+					<td>P</td>
+					<td>Q</td>
+					<td>R</td>
+					<td>S</td>
+					<td>T</td>
+					<td>U</td>
+					<td>V</td>
+					<td>W</td>
+					<td>X</td>
+					<td>Y</td>
+					<td>Z</td>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+					<td>6</td>
+					<td>7</td>
+					<td>8</td>
+					<td>9</td>
+					<td>10</td>
+					<td>11</td>
+					<td>12</td>
+					<td>13</td>
+					<td>14</td>
+					<td>15</td>
+					<td>16</td>
+					<td>17</td>
+					<td>18</td>
+					<td>19</td>
+					<td>20</td>
+					<td>21</td>
+					<td>22</td>
+					<td>23</td>
+					<td>24</td>
+					<td>25</td>
+				</tr>
+			</table>
+
+			<p> En segundo lugar se escoge una palabra como clave con la que cifrar. La palabra puede ser de cualquier longitud.
+			Para este ejemplo usaremos como clave la palabra SOL. </p>
+			<p> Una vez tengamos el mensaje a cifrar y la clave la pasamos a números siguiendo la tabla anterior. En este caso nuestra clave
+			en números sería 18 14 11.</p>
+			<p>Sumamos la clave a los dígitos del mensaje. Repetimos la clave las veces que sea necesaria hasta cubrir todo el mensaje. Por ejemplo
+			si queremos cifrar el mensaje hola (7 14 11 0) haríamos las siguientes sumas:</p>
+
+			<table rules="cols">
+				<tr>
+					<td>7</td>
+					<td>14</td>
+					<td>11</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>+</td>
+					<td>+</td>
+					<td>+</td>
+					<td>+</td>
+				</tr>
+				<tr>
+					<td>18</td>
+					<td>14</td>
+					<td>11</td>
+					<td>18</td>
+				</tr>
+			</table>
+
+			<p> El resultado de las sumas nos devuelve el mensaje cifrado.</p>
+			<p>Resultado de las sumas: 25 28 22 18</p>
+			<p>Los números que se pasen de N - 1, siendo N el tamaño del alfabeto, se les hace modulo N. En este caso nuestro alfabeto es de tamaño
+			26, por tanto a todos aquellos numeros mayores de 25 hay que realizarles el módulo. El resultado final tras haber hecho el módulo
+			es el siguiente:</p>
+
+			<p>Mensaje cifrado en números: 25 2 22 18</p>
+			<p>Por último pasamos el mensaje a letras siguiendo la primera tabla.</p>
+			<p>Mensaje cifrado en letras: Z D W S</p>
+			<p><strong>Nota</strong>: El módulo X sobre un número Y se realiza de la siguiente manera: <i>Y moduloX = Y - X*B</i>. En el caso anterior 28 - 26*1 = 2. B
+			es el número de veces que podemos multiplicar X sin que pase del valor de Y. En este caso es 1 ya que 26*2 > 28</p>
+
+			<div class="title">
+				<h2>Descifrado</h2>
+			</div>
+			<p>En el descifrado lo único que hay que hacer es restarle al mensaje cifrado la clave. En nuestro caso:</p>
+
+			<table rules="cols">
+				<tr>
+					<td>25</td>
+					<td>2</td>
+					<td>22</td>
+					<td>18</td>
+				</tr>
+				<tr>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+				</tr>
+				<tr>
+					<td>18</td>
+					<td>14</td>
+					<td>11</td>
+					<td>18</td>
+				</tr>
+			</table>
+
+			<p> El resultado de las restas nos devuelve el mensaje descifrado.</p>
+			<p>Resultado de las restas: 7 -12 11 0</p>
+			<p> En caso de que salga un número negativo hay que hacer el módulo.<p>
+			<p>-12 modulo 26 = 14</p>
+			<p><strong>Nota: </strong> El módulo X sobre un número -Y se realiza de la siguiente manera: <i>-Y moduloX = -Y + X*B</i>. En el caso anterior -12 + 26*1 = 14. B
+			el numero de veces que hay que sumar X para que Y sea positivo. En este caso es 1 ya que -12 + 26 > 0. Si al sumerle el 26 nos diese
+			un número menor que cero tendríamos que volver a sumar 26, y asi sucesivamente hasta que Y > 0. </p>
+			<p>Mensaje descfrado en números: 7 14 11 0</p>
+			<p>Resultado final en letras: hola</p>
+
 		</div>
 	</div>
 </div>
 <div id="copyright" class="container">
-	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+	<p> Rebecca Martínez Galán | Perfil de Github: <a href="https://github.com/RebeccaMartinez">Rebecca Martínez</a>.</p>
 </div>
 </body>
 </html>
